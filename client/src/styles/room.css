@@ -1,0 +1,37 @@
+button {
+  background: #333e5a;
+  color: #fff;
+  font-size: 16px;
+  padding: 0.4em;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+button:hover {
+  filter: brightness(150%);
+}
+
+.room {
+  position: relative;
+}
+
+.room > h3 {
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+.local-participant {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.remote-participants {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0 2em 2em;
+}
