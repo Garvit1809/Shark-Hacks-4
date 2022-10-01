@@ -37,6 +37,9 @@ const Navbar = () => {
         <Link to="/feed">
           <MenuItem>Posts</MenuItem>
         </Link>
+        <Link to="/chats">
+          <MenuItem>Chats</MenuItem>
+        </Link>
       </Menu>
     </Section>
   );

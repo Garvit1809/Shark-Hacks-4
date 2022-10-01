@@ -23,13 +23,12 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["shark", "sponsor", "pitcher"],
+    enum: ["blahaj", "sponsor", "pitcher"],
     default: "sponsor",
   },
   password: {
     type: String,
     required: [true, "Please provide a password"],
-    minlength: 8,
     select: false,
   },
   isAdmin: {
