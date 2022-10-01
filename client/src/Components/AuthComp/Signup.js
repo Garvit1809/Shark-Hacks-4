@@ -72,7 +72,7 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem("blahajTank-user", JSON.stringify(data));
       setPicLoading(false);
       if (role === 'pitcher') {
           navigate("/pitcher-details");

@@ -5,6 +5,8 @@ const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const messageRoutes = require('./routes/messageRoutes');
+const postRoutes = require('./routes/postRoutes');
+
 const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 const app = express();
 require('dotenv').config();
@@ -15,6 +17,7 @@ app.use(express.json());
 app.use('/api/user', userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
+app.use('/api/posts', postRoutes)
 
 app.get('/', (req,res) => {
     res.send("Hello")

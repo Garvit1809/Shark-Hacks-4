@@ -53,7 +53,7 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem("blahajTank-user", JSON.stringify(data));
       setLoading(false);
       navigate("/");
     } catch (error) {
