@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 
-const investorSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please tell us your name"],
@@ -18,17 +18,21 @@ const investorSchema = new mongoose.Schema({
   photo: String,
   role: {
     type: String,
-    enum: ['shark', 'sponsor'],
-    default: 'sponsor'
+    enum: ["shark", "sponsor", "pitcher"],
+    default: "sponsor",
   },
   password: {
     type: String,
-    required: [true, 'Please provide a password'],
+    required: [true, "Please provide a password"],
     minlength: 8,
-    select: false
+    select: false,
   },
+  comanyName: String,
+  comapanyDescription: String,
+  companyImage: String,
+  companyPosition: String,
 });
 
-const Investor = mongoose.model('Investor', investorSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = Investor;
+module.exports = User;

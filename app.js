@@ -12,6 +12,9 @@ app.get("/", (req, res)=>{
     res.send("Hello shark")
 })
 
+//  Auth APIs --> SignUp, Login, Update Pitcher
+//  Post APIs --> Post One, Get ALl33.
+
 mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("Connection to Database succesful");
 }).catch(err => console.log(err))
