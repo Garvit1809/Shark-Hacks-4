@@ -2,18 +2,22 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const userRoutes = require('./routes/userRoutes');
+const chatRoutes = require('./routes/chatRoutes');
+const messageRoutes = require('./routes/messageRoutes');
+const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 const app = express();
 require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res)=>{
-    res.send("Hello shark")
-})
+app.use('/api/user', userRoutes);
+app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
 
-//  Auth APIs --> SignUp, Login, Update Pitcher
-//  Post APIs --> Post One, Get ALl33.
+app.use(notFound);
+app.use(errorHandler);
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("Connection to Database succesful");
