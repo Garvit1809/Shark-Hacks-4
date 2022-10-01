@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components';
-import CenterBar from '../Components/FeedComp/CenterBar';
-import LeftBar from '../Components/FeedComp/LeftBar';
-import RightBar from '../Components/FeedComp/RightBar';
-import Navbar from '../Components/Navbar';
+import React from "react";
+import styled from "styled-components";
+import CenterBar from "../Components/FeedComp/CenterBar";
+import LeftBar from "../Components/FeedComp/LeftBar";
+import RightBar from "../Components/FeedComp/RightBar";
+import Navbar from "../Components/Navbar";
 
 const Section = styled.div`
   display: flex;
@@ -19,14 +19,14 @@ const Section = styled.div`
 const Feed = () => {
   return (
     <>
-    <Navbar/>
-    <Section>
-    <LeftBar/>
-    <CenterBar/>
-    <RightBar/>
-    </Section>
+      <Navbar />
+      <Section>
+        <LeftBar />
+        <CenterBar />
+        <RightBar />
+      </Section>
     </>
-  )
-}
+  );
+};
 
-export default Feed
+export default Feed;

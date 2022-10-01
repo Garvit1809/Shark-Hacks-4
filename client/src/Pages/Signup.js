@@ -30,6 +30,7 @@ const Signup = () => {
     e.preventDefault();
     console.log(userDetails);
     console.log(role);
+    localStorage.setItem("sharkTank-user", JSON.stringify(userDetails));
     if (role === "pitcher") {
       navigate('/pitcher-details')
     } else {
