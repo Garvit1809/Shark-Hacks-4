@@ -27,6 +27,12 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
     select: false
   },
+  company: {
+    type: String,
+  },
+  companyPhoto: {
+    type: String
+  }
 });
 
 const User = mongoose.model('User', userSchema);
