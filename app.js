@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res)=>{
-    resizeBy.send("Hello shark")
+    res.send("Hello shark")
 })
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
