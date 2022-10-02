@@ -1,233 +1,120 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-// import FileBase64 from "react-file-base64";
-// import ImageIcon from "@mui/icons-material/Image";
-import axios from 'axios';
-import { Input } from "@chakra-ui/react";
-import { useToast } from "@chakra-ui/toast";
-// import Button from "./Button";
+import moment from "moment";
+
 
 const Section = styled.div`
   width: 100%;
   height: auto;
   border-radius: 10px;
-  padding: 10px;
   -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  margin: 30px 0;
+  padding: 10px;
+
   @media only screen and (max-width: 700px) {
     /* border: 1px solid red; */
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 1rem auto;
+    margin-bottom: 0;
+    padding: 0;
 }
 `;
 
 const Top = styled.div`
   display: flex;
   align-items: center;
-  /* border: 1px solid red; */
-  
-  div{
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  div.postDetails {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid red; */
     align-items: flex-start;
-    justify-content: center;
-  }
-  
-  h2{
-    /* border: 1px solid red; */
-    margin-top: 0.6rem;
-    margin-bottom: 0rem;
-  }
-  
-  p{
-    /* border: 1px solid red; */
-    margin: 0;
-    margin-bottom: 0.4rem;
+    margin: 0 10px;
+    /* border: 1px solid black; */
   }
 
   img {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 10px;
   }
-`;
 
-const Bottom = styled.div`
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-
-  textarea {
-    width: 90%;
-    margin-bottom: 1rem;
-    resize: none;
+  .postUsername {
     font-size: 1.2rem;
-    &:focus {
-      outline: none;
-    }
-  }
-
-  button {
-    width: 3rem;
-    border: none;
-    padding: 7px;
-    border-radius: 5px;
-    background-color: green;
     font-weight: 500;
-    margin-right: 20px;
-    cursor: pointer;
-    color: white;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
   }
 
-  button.upload {
-    width: 7rem;
+  .postDate {
+    font-size: 0.8rem;
   }
 
   @media only screen and (max-width: 700px) {
-    textarea{
-      width: 95%;
+    /* border: 1px solid red; */
+    /* width: 90%; */
+    margin-top: 0.4rem;
+    /* margin: 0 auto; */
+    div.profileImg{
+      padding-left: 0.7rem;
+      /* border: 1px solid black; */
+      /* width: 35px; */
+      /* height: 35px; */
+    }
+
+    div.postDetails{
+      /* border: 1px solid black; */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.6rem;
+      width: auto;
+      height: 100%;
     }
 }
 `;
 
-const Buttons = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  @media only screen and (max-width: 700px) {
-    display: flex;
-    justify-content: space-between;
+const Center = styled.div`
+  margin: 20px 0;
 
-    button{
-    }
+  img {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+  }
+
+  @media only screen and (max-width: 700px) {
+    /* border: 1px solid red; */
+    margin-top: 10px;
 }
 
-  @media only screen and (max-width: 400px) {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
 `;
 
-const Upload = styled.div`
-    display: flex;
-    align-items: center;
-    svg {
-      padding-right: 0.1em;
-    }
-`;
 
-const Post = () => {
-  const [postDescription, setPostDescription] = useState('');
-  const [postImage, setPostImage] = useState();
-
-  const toast = useToast();
-
-  const [currentUser, setCurrentUser] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    async function fetchUserData() {
-      if (localStorage.getItem("blahajTank-user")) {
-        setCurrentUser(await JSON.parse(localStorage.getItem("blahajTank-user")));
-        setIsLoading(true)
-      }
-    }
-    fetchUserData();
-  }, []);
-  
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // console.log(post);
-    const userData = await JSON.parse(localStorage.getItem("blahajTank-user"));
-    const { data } = await axios.post("http://localhost:5000/api/posts/post", {
-      author: userData.username,
-      pic: userData.profilePicture,
-      postDescription,
-      postImage
-    });
-    console.log({data});
-    // console.log("posted");
-  };
-
-  const postDetails = (pics) => {
-    if (pics === undefined) {
-      toast({
-        title: "Please Select an Image!",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      return;
-    }
-    console.log(pics);
-    if (pics.type === "image/jpeg" || pics.type === "image/png") {
-      const data = new FormData();
-      data.append("file", pics);
-      data.append("upload_preset", "chat-app");
-      data.append("cloud_name", "dkgrvhkxb");
-      fetch("https://api.cloudinary.com/v1_1/dkgrvhkxb/image/upload", {
-        method: "post",
-        body: data,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setPostImage(data.url.toString());
-          console.log(data);
-          console.log(data.url.toString());
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      toast({
-        title: "Please Select an Image!",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      return;
-    }
-  };
+const Post = ({ post, currentUser }) => {
   return (
-    isLoading && <Section>
+    <Section>
       <Top>
-        <img src={currentUser.pic} alt="user" />
-        <div>
-        <h2>{currentUser.name}</h2>
-        <p>{currentUser.role}</p>
+        <div className="profileImg">
+          <img src={post.pic} alt="user1" />
+          <div className="postDetails">
+            <span className="postUsername">{post.author}</span>
+            <span className="postDate">{moment(post.createdAt).fromNow()}</span>
+          </div>
         </div>
       </Top>
-      <hr className="shareHr" />
-      <Bottom>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            cols="30"
-            rows="4"
-            placeholder="Whats in your mind"
-            name='desc'
-            value={postDescription}
-            onChange={(e) => setPostDescription(e.target.value)}
-          />
-          <Buttons>
-            <Upload>
-            <Input
-          type="file"
-          p={1.5}
-          accept="image/*"
-          onChange={(e) => postDetails(e.target.files[0])}
-        />
-            </Upload>
-            <button type="submit">Post</button> 
-          </Buttons>
-        </form>
-      </Bottom>
+      <Center>
+        <span>{post.postDescription}</span>
+        <img src={post.postImage} alt="postImg" />
+      </Center>
     </Section>
   )
 }

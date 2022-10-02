@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 import axios from "axios";
+import Share from './Share';
 import Post from './Post';
 
 const Section = styled.div`
@@ -37,7 +38,7 @@ const CenterBar = () => {
   return (
     isLoading && (
       <Section>
-        <Post />
+        <Share />
         <AllPosts>
           {posts.map((post, index) => (
             <Post key={index} post={post}/>

@@ -9,7 +9,9 @@ const postSchema = new mongoose.Schema({
     companyPosition: String,
     postDescription: String,
     postImage: String,
-});
+},
+{timestamps: true}
+);
 
 const Post = mongoose.model("Post", postSchema);
 
