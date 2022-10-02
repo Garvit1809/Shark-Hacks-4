@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import StripeCheckout from 'react-stripe-checkout'
+import { Link } from "react-router-dom";
 
 const Section = styled.div`
   width: 100%;
@@ -159,7 +160,11 @@ const Post = ({ post }) => {
       >
       <button className="btn-large pink">Become a Sponsor</button>
       </StripeCheckout>
-      <button className="btn-large blue" >Join ChatRoom</button>
+      <button className="btn-large blue" >
+      <Link to="/chats" >
+      Join ChatRoom
+      </Link>
+      </button>
       </Bottom>
     </Section>
   )

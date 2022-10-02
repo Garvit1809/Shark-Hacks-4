@@ -74,11 +74,7 @@ const Signup = () => {
       });
       localStorage.setItem("blahajTank-user", JSON.stringify(data));
       setPicLoading(false);
-      if (role === 'pitcher') {
-          navigate("/pitcher-details");
-      } else {
-          navigate("/");
-      }
+      navigate("/");
     } catch (error) {
       toast({
         title: "Error Occured!",

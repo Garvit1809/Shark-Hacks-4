@@ -4,5 +4,5 @@ module.exports = {
       apiKey: process.env.TWILIO_API_KEY,
       apiSecret: process.env.TWILIO_API_SECRET
     }
-  };
+};
   

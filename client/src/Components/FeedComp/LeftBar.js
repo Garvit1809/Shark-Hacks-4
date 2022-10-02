@@ -174,15 +174,15 @@ export default function Sidebar() {
           </InfoItem>
           <InfoItem>
             🏆
-            <p>Hosted <span>2</span> Campaigns</p>
+            <p>Pitched <span>2</span> Ideas</p>
           </InfoItem>
           <InfoItem>
             🥇
-            <p>Contributed in <span>4</span> Campaigns</p>
+            <p>Contributed in <span>4</span> Startups</p>
           </InfoItem>
           <InfoItem>
-            🥇
-            <p>Participation in <span>5</span> Events</p>
+            💲
+            <p>Raised total <span>$50k</span></p>
           </InfoItem>
         </Info>
       </Details>

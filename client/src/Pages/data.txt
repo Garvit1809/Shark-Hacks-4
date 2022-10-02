@@ -1,0 +1,15 @@
+desc :- 10xfs is a SaaS platform that helps founders to leverage their investors, advisors, friend's network in a streamlined manner.
+founder:- Oliur Sahin
+
+
+Comp2:- Unbox Robotics
+desc:- Unbox Robotics is a leading supply chain robotics technology company, specialising in robotics-based fulfilment and distribution technology for small to large e-commerce, retail and logistics enterprises. Unbox Robotics’ cutting edge technology solutions accelerates the parcel sortation and order fulfilment to facilitate efficient express logistics operations delivering seamless end-customer experience.
+founder:- Pramod Ghadge
+image >
+postImg >
+
+comp3:- SuperReach
+desc:-We are an early-stage SaaS platform to help businesses get 4x higher conversion on their sales reachouts using prospecting and communication intelligence. Interested Investors may contact us through our chatRoom
+founder:- Aakash Tanwar
+image
+postImg

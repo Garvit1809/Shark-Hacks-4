@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import BackgroundImage from '../Assets/SharkWallpaper.jpg'
 import {
   Box,
   Container,
@@ -14,6 +15,10 @@ import {
 import { useEffect } from "react";
 import Login from "../Components/AuthComp/Login";
 import Signup from "../Components/AuthComp/Signup";
+
+const Background = styled.div`
+background-image: ${BackgroundImage};
+`
 
 // const Section = styled.div`
 //   /* display: flex; */
@@ -37,13 +42,13 @@ const Auth = () => {
   // });
   // const [role, setRole] = useState("sponsor");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("blahajTank-user"));
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("blahajTank-user"));
 
-    if (user) navigate("/");
-  }, [navigate]);
+  //   if (user) navigate("/");
+  // }, [navigate]);
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -62,6 +67,8 @@ const Auth = () => {
   // };
 
   return (
+    <Background>
+    
     <Container maxW="xl" centerContent>
       <Box
         display="flex"
@@ -94,6 +101,7 @@ const Auth = () => {
         </Tabs>
       </Box>
     </Container>
+    </Background>
   );
 };
 
