@@ -1,4 +1,4 @@
-<h1 align="center"> Shark Hacks 4
+<h1 align="center"> BlahajTank
 
 ## ✨️ Inspiration
 As many spectcular ideas are forgotten because there are no support or Investors, and Investors keep their money in pocket waiting for risky-worthy ideas. So We were thinking about bridging the gap between creative people and investors through programming. Developers are always trying to make people life richer and easier as it's our job!
