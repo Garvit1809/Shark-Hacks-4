@@ -169,6 +169,9 @@ function SideDrawer() {
         <Link to="/chats">
           <ListMenuItem>Chats</ListMenuItem>
         </Link>
+        <Link to="/meet">
+          <ListMenuItem>Meeting</ListMenuItem>
+        </Link>
       </ListMenu>
         <div>
           <Menu>

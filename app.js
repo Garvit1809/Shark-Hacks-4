@@ -1,6 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const pino = require('express-pino-logger')();
+const config = require('./config');
+const { videoToken } = require('./tokens');
 
 const userRoutes = require('./routes/userRoutes');
 const chatRoutes = require('./routes/chatRoutes');
@@ -13,6 +17,9 @@ const uuid = require("uuid")
 
 const app = express();
 require('dotenv').config();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(pino);
 
 app.use(express.json());
 app.use(cors());
@@ -52,6 +59,37 @@ app.post("/payment", (req,res) => {
     .then(result => res.status(200).json(result))
     .catch(err => console.log(err))
 })
+
+
+const sendTokenResponse = (token, res) => {
+    res.set('Content-Type', 'application/json');
+    res.send(
+      JSON.stringify({
+        token: token.toJwt()
+      })
+    );
+};
+
+app.get('/api/greeting', (req, res) => {
+    const name = req.query.name || 'World';
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
+  });
+  
+  app.get('/video/token', (req, res) => {
+    const identity = req.query.identity;
+    const room = req.query.room;
+    const token = videoToken(identity, room, config);
+    sendTokenResponse(token, res);
+  
+  });
+  app.post('/video/token', (req, res) => {
+    const identity = req.body.identity;
+    const room = req.body.room;
+    const token = videoToken(identity, room, config);
+    sendTokenResponse(token, res);
+  });
+
 
 app.use(notFound);
 app.use(errorHandler);

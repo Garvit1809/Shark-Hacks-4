@@ -23,6 +23,7 @@
     "react-stripe-checkout": "^2.6.3",
     "socket.io-client": "^4.5.2",
     "styled-components": "^5.3.6",
+    "twilio-video": "^2.24.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

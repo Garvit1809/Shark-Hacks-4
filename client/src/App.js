@@ -5,6 +5,7 @@ import PitcherDetails from './Pages/PitcherDetails';
 import Feed from './Pages/Feed';
 import Auth from './Pages/Auth';
 import Chat from './Pages/Chat';
+import VideoCall from './Pages/VideoCall'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Route path='/' element={<Home/>} exact />
     <Route path='/feed' element={<Feed/>} />
     <Route path='/chats' element={<Chat/>} />
+    <Route path='/meet' element={<VideoCall/>} />
     </Routes>
     </div>
     );
