@@ -3,7 +3,8 @@ import styled from "styled-components";
 import CenterBar from "../Components/FeedComp/CenterBar";
 import LeftBar from "../Components/FeedComp/LeftBar";
 import RightBar from "../Components/FeedComp/RightBar";
-import Navbar from "../Components/Navbar";
+import SideDrawer from "../Components/miscellaneous/SideDrawer";
+import { ChatState } from "../Context/ChatProvider";
 
 const Section = styled.div`
   display: flex;
@@ -17,9 +18,10 @@ const Section = styled.div`
 `;
 
 const Feed = () => {
+  const { user } = ChatState();
   return (
     <>
-      <Navbar />
+    {user && <SideDrawer />}
       <Section>
         <LeftBar />
         <CenterBar />

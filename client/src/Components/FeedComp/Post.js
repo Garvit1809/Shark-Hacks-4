@@ -98,8 +98,20 @@ const Center = styled.div`
 
 `;
 
+const Bottom = styled.div`
+/* border: 1px solid red; */
+display: flex;
+align-items: center;
+justify-content: space-around;
+`
+
 
 const Post = ({ post }) => {
+
+  const sponsorHandler = () => {
+    alert("Helo")
+  }
+
   return (
     <Section>
       <Top>
@@ -115,6 +127,10 @@ const Post = ({ post }) => {
         <span>{post.postDescription}</span>
         <img src={post.postImage} alt="postImg" />
       </Center>
+      <Bottom>
+      <button onClick={sponsorHandler} >Become a Sponsor</button>
+      <button>Join ChatRoom</button>
+      </Bottom>
     </Section>
   )
 }

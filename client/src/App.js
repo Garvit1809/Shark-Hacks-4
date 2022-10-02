@@ -1,21 +1,21 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import PitcherDetails from './Pages/PitcherDetails';
 import Feed from './Pages/Feed';
 import Auth from './Pages/Auth';
+import Chat from './Pages/Chat';
 
 function App() {
   return (
     <div className="App">
-    <BrowserRouter>
     <Routes>
     <Route path='/auth' element={<Auth/>} />
     <Route path='/pitcher-details' element={<PitcherDetails/>} />
-    <Route path='/' element={<Home/>} />
+    <Route path='/' element={<Home/>} exact />
     <Route path='/feed' element={<Feed/>} />
+    <Route path='/chats' element={<Chat/>} />
     </Routes>
-    </BrowserRouter>
     </div>
     );
 }

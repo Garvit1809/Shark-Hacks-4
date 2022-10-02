@@ -1,10 +1,12 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
+import SideDrawer from '../Components/miscellaneous/SideDrawer'
+import { ChatState } from '../Context/ChatProvider';
 
 const Home = () => {
+  const { user } = ChatState();
   return (
     <>
-    <Navbar/>
+    {user && <SideDrawer />}
     <div>Home</div>
     </>
   )
