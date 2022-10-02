@@ -99,7 +99,7 @@ const Center = styled.div`
 `;
 
 
-const Post = ({ post, currentUser }) => {
+const Post = ({ post }) => {
   return (
     <Section>
       <Top>

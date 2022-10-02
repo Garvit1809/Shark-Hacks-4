@@ -17,7 +17,7 @@ const getAllPosts = async (req, res) => {
 
 const createPost = async (req, res) => {
     const post = new Post(req.body);
-
+    // console.log(post);
     try {
         await post.save();
         res.status(201).json({

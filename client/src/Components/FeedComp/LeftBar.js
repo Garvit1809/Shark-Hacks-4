@@ -73,28 +73,25 @@ const Credentials = styled.div`
 
   h4 {
     font-weight: 300;
-    font-size: 1.05rem;
+    font-size: 0.8rem;
+    font-weight: 600;
   }
 
   h5 {
-    font-weight: 200;
-    text-decoration: underline;
-    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
   }
 
   @media only screen and (max-width: 700px) {
     display: flex;
     flex-direction: row;
     height: auto;
-    /* border: 1px solid blue; */
-    /* margin-bottom: 2r; */
     h4{
-      /* border: 1px solid black; */
       margin: 0 auto;
       font-size: 0.8rem;
     }
     h5{
-      /* border: 1px solid black; */
       margin: 0.5rem auto;
       font-size: 0.7rem;
     }
@@ -147,33 +144,33 @@ const InfoItem = styled.div`
 
 export default function Sidebar() {
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
 
-//   useEffect(() => {
-//     async function fetchUserData() {
-//       if (localStorage.getItem("ecogather-user")) {
-//         const userData = await JSON.parse(localStorage.getItem("ecogather-user"))
-//         setCurrentUser(userData);
-//         setIsLoading(true)
-//       }
-//     }
-//     fetchUserData();
-//   }, [])
+  useEffect(() => {
+    async function fetchUserData() {
+      if (localStorage.getItem("blahajTank-user")) {
+        const userData = await JSON.parse(localStorage.getItem("blahajTank-user"))
+        setCurrentUser(userData);
+        setIsLoading(true)
+      }
+    }
+    fetchUserData();
+  }, [])
 
   return (
     isLoading && <Section>
       <Details>
-        <img src={UserImg} alt="user" />
+        <img src={currentUser.pic} alt="user" />
         <Credentials>
           <h4>Credential and Highlights</h4>
-          <h5>More</h5>
+          <h5>🤓{currentUser.role}</h5>
         </Credentials>
         <hr />
         <Info>
           <InfoItem>
             🧑
-            <p>Garvit Varshney</p>
+            <p>{currentUser.name}</p>
           </InfoItem>
           <InfoItem>
             🏆

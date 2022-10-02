@@ -145,8 +145,8 @@ const Share = () => {
     // console.log(post);
     const userData = await JSON.parse(localStorage.getItem("blahajTank-user"));
     const { data } = await axios.post("http://localhost:5000/api/posts/post", {
-      author: userData.username,
-      pic: userData.profilePicture,
+      author: userData.name,
+      pic: userData.pic,
       postDescription,
       postImage
     });
@@ -210,7 +210,7 @@ const Share = () => {
           <textarea
             cols="30"
             rows="4"
-            placeholder="Whats in your mind"
+            placeholder="Pitch your Ideas to the Blahajs/Sponsors"
             name='desc'
             value={postDescription}
             onChange={(e) => setPostDescription(e.target.value)}
