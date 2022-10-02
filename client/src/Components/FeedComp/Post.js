@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import moment from "moment";
-
+import StripeCheckout from 'react-stripe-checkout'
 
 const Section = styled.div`
   width: 100%;
@@ -107,10 +107,33 @@ justify-content: space-around;
 
 
 const Post = ({ post }) => {
+  
+  const [product, setProduct] = useState({
+    name: "React from FB",
+    price: 10,
+    productBy: "facebook"
+  });
 
-  const sponsorHandler = () => {
-    alert("Helo")
-  }
+  const makePayment = token => {
+    const body = {
+      token,
+      product
+    }
+    const headers = {
+      "Content-Type": "application/json"
+    }
+
+    return fetch(`http://localhost:5000/payment`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body)
+    }).then(response => {
+      console.log("RESPONSE :- ", response);
+      const {status} = response;
+      console.log("STATUS :- ", status);
+    })
+    .catch(err => console.log(err))
+  };
 
   return (
     <Section>
@@ -128,8 +151,15 @@ const Post = ({ post }) => {
         <img src={post.postImage} alt="postImg" />
       </Center>
       <Bottom>
-      <button onClick={sponsorHandler} >Become a Sponsor</button>
-      <button>Join ChatRoom</button>
+      <StripeCheckout
+      stripeKey={process.env.REACT_APP_KEY}
+      token={makePayment}
+      name='Sponsor'
+      amount={product.price * 100}
+      >
+      <button className="btn-large pink">Become a Sponsor</button>
+      </StripeCheckout>
+      <button className="btn-large blue" >Join ChatRoom</button>
       </Bottom>
     </Section>
   )
