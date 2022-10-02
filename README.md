@@ -44,8 +44,10 @@ BlahajTank is an application for pitchers and sharks to share what they have in 
 - There were tons of errors when we were trying to connect the used APIs.
 
 ## 💃️ Accomplishments that we're proud of
+- Came up with a new idea of promoting entrepreneurship through online pitching of startup ideas.
 - The Video Call chat room.
 - Making the app with number of decent features despite of the time.
+
 
 ## 👨‍💻️ What we learned
 - Using twilio and twilio-video APIs.
